@@ -1,0 +1,12 @@
+object ScoreCount(type:text) {
+    when gameStarts {
+        setText(Game.score,color:HSB(0,0,0)) //Not the actual color used in the Hopscotch project, and I'd prefer something like this to compile to an hsb block
+        drawATrail(color:HSB(0,0,82),width:9999) {
+            setPosition(x:self.position.x,y:self.position.y)
+        }
+    }
+
+    when messageRecieved("showNewScore") {
+        setText(Game.score,color:HSB(0,0,0))
+    }
+}

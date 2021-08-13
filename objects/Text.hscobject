@@ -1,0 +1,55 @@
+object Text(type: text) {
+    //Custom blocks
+    block spawnClones() { //Renamed clone spawner. 
+        forever { //Definitely also have shorter versions of control block names 
+            wait(seconds:random(1,to:3))
+            clone //Also have shorter names for some blocks? Maybe have a way to define your own aliases for blocks.
+        }
+    }
+
+    alwaysdupe block showNewScore() { //'alwaysdupe' for always using 'dupe' from rawrbears example. Not sure we should add this, and if we do it shouldn't be used in this situation
+        broadcastMessage("showNewScore")
+    }
+
+    //Custom math blocks. Not in Hopscotch but why not include them? Maybe not for the first version but would definitely be helpful
+    math randomFromZero(max) {
+        return random(0,max) //Would only allow math/string manipulation blocks. Also maybe conditionals, since they can be used in math blocks?
+    }
+
+    //Rules
+    when gameIsPlaying() { //Possibly make shorter names for more common rules, as well as these
+        self.invisibility = 100 //Will become set invisibility. I think Jeffery came up with this idea? Not sure which is better.
+        spawnClones //Parenthethis not required for blocks that don't need them?
+    }
+    
+    when objectIsCloned() {
+        setPosition(x:randomFromZero(Game.width),y:randomFromZero(Game.height))
+        startSound(drop,wait:0)
+        if (random(1,100) > 90) { //Allow symbols for comparasins? 
+            setImage(gorilla)
+            self.type = 1
+        } else {
+            if (random(0,1) == 0) { //Allow else ifs?
+                setImage(circle)
+            } else {
+                setImage(square)
+            }
+            setColor(randomColor()) //Don;t allow removal of () inside of parameters so it's not confused with variables?
+        }
+        
+        setInvisibility(0)
+    }
+
+    when tapped(self) {
+        if (self.type == 1) {//Could also use = here, maybe allow both?
+            startSound(roar,wait:0)
+            Game.score += 50
+            showNewScore
+        } else {
+            startSound(pop,wait:0)
+            Game.score += 10
+            showNewScore
+        }
+        destroy
+    }
+}

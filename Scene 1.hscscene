@@ -1,0 +1,8 @@
+scene Game {
+    gameStartsMessageName: "Game starts" //This could be omitted, and it would use a default message name?
+
+    objects: [
+        Text()
+        ScoreCount() 
+    ]
+}

@@ -1,0 +1,5 @@
+project WhackADot { //Used for configuring stuff for the project. Not sure how to format this file in a good way. I don't like this option much though.
+stageWidth: 375
+stageHeight: 667
+mainScene: Game //Might not be necessary for games with only one scene.
+}
