@@ -18,8 +18,10 @@ object Text(type: text) {
 
     //Rules
     when gameIsPlaying() { //Possibly make shorter names for more common rules, as well as these
-        self.invisibility = 100 //Will become set invisibility. I think Jeffery came up with this idea? Not sure which is better.
-        spawnClones //Parenthethis not required for blocks that don't need them?
+        if (self.cloneIndex == originalObject.cloneIndex) {
+            self.invisibility = 100 //Will become set invisibility. I think Jeffery came up with this idea? Not sure which is better.
+            spawnClones //Parenthethis not required for blocks that don't need them?
+        }
     }
     
     when objectIsCloned() {
